@@ -1,109 +1,132 @@
 #include<iostream>
 using namespace std;
 
+// ----------------------------------------------
+// -------------------  Topic 01 -----------------
+// ----------------------------------------------
+#include <map>
 
-// Copy Constructor
-//class Number {
-//    int a;
-//public:
-//    Number() {
-//        a = 0;
-//    }
-//
-//    Number(int num) {
-//        a = num;
-//    }
-//    // When no copy constructor is found, compiler supplies its own copy constructor
-//    Number(Number& obj) {
-//        cout << "Copy constructor called!!!" << endl;
-//        a = obj.a;
-//    }
-//
-//    void display() {
-//        cout << "The number for this object is " << a << endl;
-//    }
-//};
-//
-//int main() {
-//    Number x, y, z(45), z2;
-//    x.display();
-//    y.display();
-//    z.display();
-//
-//    Number z1(z); // Copy constructor invoked
-//    z1.display();
-//
-//    z2 = z; // Copy constructor not called
-//    z2.display();
-//
-//    Number z3 = z; // Copy constructor invoked
-//    z3.display();
-//
-//    // z1 should exactly resemble z  or x or y
-//
-//    return 0;
-//}
+int main() {
+   // Create a dictionary (map) where keys are strings and values are integers
+   map<string, int> studentGrades;
+
+   // Adding key-value pairs
+   studentGrades["Jack"] = 90;
+   studentGrades["James"] = 85;
+   studentGrades["Jon"] = 78;
+
+   // Accessing values
+   cout << "Jack's Grade: " << studentGrades["Jack"] << endl;
+
+   // Iterating through the map
+   cout << "Student Grades:\n";
+   for (const auto& sg : studentGrades) {
+       cout << sg.first << " -> " << sg.second << endl;
+   }
+
+   return 0;
+}
 
 
+// ----------------------------------------------
+// -------------------  Topic 02 -----------------
+// ----------------------------------------------
+#include <unordered_map>
 
+int main() {
+    unordered_map<string, int> ages;
 
-class Player {
-    private:
-        string name;
-        int health;
-        int level;
-    
-    public:
-        // Parameterised constructor
-        Player(string playerName, int playerHealth, int playerLevel)
-            : name(playerName), health(playerHealth), level(playerLevel) {
-            cout << "Parameterised constructor called for " << name << endl;
-        }
-    
-        // Copy constructor
-        Player(const Player& other)
-            : name(other.name), health(other.health), level(other.level) {
-            cout << "Copy constructor called for " << name << endl;
-        }
-    
-        // Display player details
-        void display() const {
-            cout << "Name: " << name << ", Health: " << health << ", Level: " << level << endl;
-        }
-    
-        // Setter for health 
-        void setName(string newName) {
-            name = newName;
-        }
-    
-        // Setter for health 
-        void setHealth(int newHealth) {
-            health = newHealth;
-        }
-    
-        ~Player() {
-            cout << "Destructed" << endl;
-        }
-    
-    
-    
-    };
-    
-    int main() {
-        // Create a player object
-        Player player1("Hero", 100, 10);
-        player1.display();
-    
-        // copy constructor used to create a copy of player1
-        Player player2(player1);
-        player2.display();
-    
-        // health of player2 modified to demonstrate independence
-        player2.setHealth(80);
-        player2.setName("Jack");
-        cout << "After modifying player2's health and name :" << endl;
-        player1.display();
-        player2.display();
-    
-        return 0;
+    // Adding key-value pairs
+    ages["Jack"] = 25;
+    ages["James"] = 30;
+    ages["Jon"] = 28;
+
+    // Accessing values
+    cout << "Jon's Age: " << ages["Jon"] << endl;
+
+    // Iterating through the unordered_map
+    cout << "Ages of People:\n";
+    for (const auto& people : ages) {
+        cout << people.first << " -> " << people.second << endl;
     }
+
+    return 0;
+}
+
+// ----------------------------------------------
+// -------------------  Topic 02 -----------------
+// ----------------------------------------------
+
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main() {
+    map<string, int> studentGrades;    
+
+    // Adding key-value pairs
+    studentGrades["Jack"] = 90;
+    studentGrades["James"] = 85;
+    studentGrades["Jon"] = 78;
+
+    // Accessing elements
+    cout << "Jack's Grade: " << studentGrades["Jack"] << endl;
+    cout << "Jon's Grade: " << studentGrades["Jon"] << endl;
+
+    map<int, string> studentNames;
+
+    studentNames[1] = "Ram";
+    studentNames[2] = "Vish";
+    cout << "Student ID 1 : " << studentNames[1] << endl;
+    cout << "Student ID 2 : " << studentNames[2] << endl;
+  
+
+    map<int, string> employees = { {101, "John"}, {103, "Emma"}, {102, "David"} };
+
+    cout << "Employee List:\n";
+    for (const auto& e : employees) {
+        cout << "ID: " << e.first << ", Name: " << e.second << endl;
+    }
+
+
+    map<string, int> scores = { {"Alice", 90}, {"Bob", 85}, {"Charlie", 78} };
+
+    string name;
+    cout << "Enter student name: ";
+    cin >> name;
+
+    // Check if the key exists
+    if (scores.find(name) != scores.end()) {
+        cout << name << "'s score is: " << scores[name] << endl;
+    }
+    else {
+        cout << name << " not found in the records.\n";
+    }
+
+    map<int, string> students = { {101, "Alice"}, {102, "Bob"}, {103, "Charlie"} };
+
+    // Remove a student with ID 102
+    students.erase(102);
+
+    // Display the remaining students
+    cout << "Students after deletion:\n";
+    for (const auto& pair : students) {
+       cout << "ID: " << pair.first << ", Name: " << pair.second << endl;
+    }
+
+
+
+    map<string, int> students = { {"Alice", 90}, {"Bob", 85}, {"Charlie", 78} };
+
+    // Check if "Alice" exists
+    if (students.count("Alice") > 0) {
+       cout << "Alice exists in the map.\n";
+    }
+    else {
+       cout << "Alice does not exist.\n";
+    }
+
+
+
+    return 0;
+}
